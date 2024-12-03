@@ -55,23 +55,9 @@
   };
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
-  services.xserver.videoDrivers = ["nvidia"];
-  services.ratbagd.enable = true;  
-
-  #OpenTabletDriver
-  hardware.wooting.enable = true;  
-  hardware.logitech.wireless.enable = true;
-
+  
   programs.hyprland.enable = true;
   programs.hyprland.withUWSM = true;
-    
-
-  nix.settings = {
-    substituters = ["https://hyprland.cachix.org"];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-  };
-
-
   hardware.graphics.enable32Bit = true;
 
   hardware.nvidia = {
@@ -101,48 +87,11 @@
 	kitty
 	wofi
 	google-chrome	
-	glib
-	steam
-	fastfetch
 	hyprpaper
-	kdePackages.qtwayland
-	kdePackages.dolphin
-	libsForQt5.dolphin
-	kdePackages.qtsvg
 	amneziawg-go
 	amneziawg-tools
-	pavucontrol
-	rofi-wayland
 	linuxKernel.kernels.linux_zen
 	linuxKernel.packages.linux_zen.amneziawg
-	wootility
-	wget
-	zenity
-	xdg-desktop-portal
-	python313
-	mpvpaper
-	fira-code
-	oh-my-zsh
-	neofetch
-	zsh
-	zapret
-	solaar
-	zsh-powerlevel10k
-	socat
-	lutris
-	xdg-user-dirs
-	xdg-user-dirs-gtk
-	adw-gtk3
-	heroic
-	xwayland
-	piper
-	egl-wayland
-	nwg-look
-	obs-studio
-	zapret
-	(discord-canary.override {
-	withVencord = true;
-    })
   ];
   
   # On NixOS 24.05 or older, this option must be set:
@@ -167,8 +116,6 @@
   #   enableSSHSupport = true;
   # };
   
-  programs.waybar.enable = true;
-
   programs.steam = {
   enable = true;
   remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
@@ -183,27 +130,7 @@
   # Enable Oh-my-zsh
   programs.zsh.ohMyZsh = {
     enable = true;
-    plugins = [ "git" "sudo" "docker" "kubectl" ];
   };  
-  
-  programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-  
-#  environment.systemPackages = with pkgs; [
-#    (lutris.override {
-#      extraLibraries =  pkgs: [
-#        # List library dependencies here
-#      ];
-#    })
-#  ];
-
-#  environment.systemPackages = with pkgs; [
-#    (lutris.override {
-#       extraPkgs = pkgs: [
-         # List package dependencies here
-#       ];
-#    })
-#  ];
-
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
